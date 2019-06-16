@@ -82,15 +82,14 @@ class App extends Component{
     } 
   render ()
   {
-
     
-    const { auth, anchorEl } = this.state;
+        const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
    const {flagDisplayProyectos,flagDisplayProyecto}=this.state
    //const FixedPosition = withStyles(styles)(({ classes }) => (
      
-   //))
+   //
    const {classes} = this.props;
    //alert(JSON.stringify(classes))
    return (
