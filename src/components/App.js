@@ -1,7 +1,7 @@
 import React, {Component,Fragment}  from 'react';
 //import Header from './layouts/header'
 
-//https://www.youtube.com/watch?v=xm4LX5fJKZ8&list=PLcCp4mjO-z98WAu4sd0eVha1g-NMfzHZk
+
 import { withStyles } from '@material-ui/core/styles';
 import {Header,Footer} from './layouts/index'
 import Proyecto from './proyectos/proyecto'
@@ -30,6 +30,7 @@ class App extends Component{
   };
   }
  
+  
     goLogin=(e)=>{
       //alert()
       alert("login")
@@ -58,11 +59,12 @@ class App extends Component{
    //
    const {classes} = this.props;
    //alert(JSON.stringify(classes))
+ //      <div className={classes.toolbarMargin} />
+ 
    return (
     <Fragment>
     <Header goComponent={this.goComponent}/>
       <div className={classes.root}>
-       <div className={classes.toolbarMargin} />
        {flagDisplayProyectos&&
    <Proyectos goComponent={this.goComponent}/>
       }
