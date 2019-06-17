@@ -18,7 +18,6 @@ function NavBar(props) {
                     </TypoGraphy>
                 </ListItemText>
 
-
                 <ListItemText inset>
                     <TypoGraphy color="inherit" variant="title">
                         Proyectos <Book />
