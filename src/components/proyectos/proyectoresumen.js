@@ -31,9 +31,12 @@ function ProyectoResumen(props) {
     <Typography variant="h5" color="grey" noWrap>
                       30%
     </Typography>
-    
-  </Paper>
+    <Button variant={"outlined"} color={"secondary"} fullWidth>
+                        Detalles
+                    </Button>
 
+  </Paper>
+  
   </Grid>
   <Grid item sm className={classes.card}>
   <Paper style={style.Paper}>
@@ -43,7 +46,9 @@ function ProyectoResumen(props) {
     <Typography variant="h5" color="grey" noWrap>
                       30%
     </Typography>
-    
+    <Button variant={"outlined"} color={"secondary"} fullWidth>
+                        detalles
+                    </Button>    
   </Paper>
 
   </Grid>
@@ -55,9 +60,12 @@ function ProyectoResumen(props) {
     <Typography variant="h5" color="grey" noWrap>
                       30%
     </Typography>
-    
+    <Button variant={"outlined"} color={"secondary"} fullWidth>
+            Detalles
+    </Button>
+  
   </Paper>
-
+  
   </Grid>
 </Grid>
 
