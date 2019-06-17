@@ -6,6 +6,8 @@ import { withStyles } from '@material-ui/core/styles';
 import {Header,Footer} from './layouts/index'
 import Proyecto from './proyectos/proyecto'
 import Proyectos from './proyectos/proyectos'
+import ProyectoResumen from './proyectos/proyectoresumen'
+
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -68,8 +70,10 @@ class App extends Component{
        {flagDisplayProyectos&&
    <Proyectos goComponent={this.goComponent}/>
       }
+          {flagDisplayProyecto&&
+   <ProyectoResumen />    
+      }
       {flagDisplayProyecto&&
-      
    <Proyecto  goComponent={this.goComponent}/>
       }        
    </div>
@@ -79,49 +83,4 @@ class App extends Component{
 }
 }
 export default withStyles(styles)(App);
-/*
-   <AppBar color="primary" position="fixed">
-   <Toolbar >
-        <IconButton
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="Menu"
-          onClick={this.handleMenu}
-        >
-          <MenuIcon />
-        </IconButton>
-        <img src={logo} style={{ height: '20px' }} />
 
-        <Typography
-          variant="title"
-          color="inherit"
-         className={classes.flex}
-        >
-          Grupo Vinsoca
-        </Typography>
-        <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="contrast"
-                >
-                   </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleProyectos}>Proyectoss</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Clientes</MenuItem>
-                  <MenuItem onClick={this.handleClose}>Mensajes</MenuItem>
-
-                </Menu>
-              </div>
-        <Button   onClick={()=>this.goLogin()}  color="inherit">Login</Button>
-      </Toolbar>
-       
-   </AppBar>
-
-      */

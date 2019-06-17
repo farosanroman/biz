@@ -9,83 +9,59 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 //import { posts } from "./dummy-posts";
 
-
+const style={   Paper:{padding:20,marginTop:10,marginBottom:10}
+}
 const useStyles = makeStyles({
   card: {
-    maxWidth: 100,
+    maxWidth: 200,
   },
+   Paper:{padding:20,marginTop:10,marginBottom:10}
 });
 function ProyectoResumen(props) {
   const classes = useStyles();
   return (
     <div style={{ marginTop: 20, padding: 30 }}>
 
-<Grid container spacing={40} justify="center">
-<Grid item key={2}>
-            <Card  className={classes.card}>
-              <CardActionArea>
-                
-                <CardContent >
-                  <Typography gutterBottom  component="p">
-                    Vendidos
-                  </Typography>
-                  <Typography gutterBottom  component="h2">
-                    67.23%
-                  </Typography>
-                 
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-              <Button size="small" color="primary">
-          Share
-        </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-       
-          <Grid item key={1}>
-            <Card  className={classes.card}>
-              <CardActionArea>
-                
-                <CardContent >
-                  <Typography gutterBottom  component="p">
-                    Cobrados
-                  </Typography>
-                  <Typography gutterBottom  component="h2">
-                    120.000,89
-                  </Typography>
-                 
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-              <Button size="small" color="primary">
-          Detalle
-        </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-          <Grid item key={1}>
-            <Card  className={classes.card}>
-              <CardActionArea>
-                
-                <CardContent >
-                  <Typography gutterBottom  component="p">
-                    Vencidos
-                  </Typography>
-                  <Typography gutterBottom  component="h2">
-                    20.000,89
-                  </Typography>
-                 
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-              <Button size="small" color="primary">
-          Detalle
-        </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-      </Grid>
+<Grid container justify="center">
+  <Grid item sm className={classes.card}>
+  <Paper style={style.Paper}>
+  <Typography variant="h5" color="grey" noWrap>
+                        Vendidos:
+    </Typography>
+    <Typography variant="h5" color="grey" noWrap>
+                      30%
+    </Typography>
+    
+  </Paper>
+
+  </Grid>
+  <Grid item sm className={classes.card}>
+  <Paper style={style.Paper}>
+  <Typography variant="h5" color="grey" noWrap>
+                        Cobrados:
+    </Typography>
+    <Typography variant="h5" color="grey" noWrap>
+                      30%
+    </Typography>
+    
+  </Paper>
+
+  </Grid>
+  <Grid item sm className={classes.card}>
+  <Paper style={style.Paper}>
+  <Typography variant="h5" color="grey" noWrap>
+                        Vencidos:
+    </Typography>
+    <Typography variant="h5" color="grey" noWrap>
+                      30%
+    </Typography>
+    
+  </Paper>
+
+  </Grid>
+</Grid>
+
+
 
     </div>
   );
