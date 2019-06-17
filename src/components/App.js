@@ -69,6 +69,7 @@ class App extends Component{
    <Proyectos goComponent={this.goComponent}/>
       }
       {flagDisplayProyecto&&
+      
    <Proyecto  goComponent={this.goComponent}/>
       }        
    </div>

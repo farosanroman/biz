@@ -7,6 +7,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
+import Box from '@material-ui/core/Box';
 //import { posts } from "./dummy-posts";´
 //https://reactgo.com/material-ui-react-tutorial/
 
@@ -27,8 +28,8 @@ function Proyectos(props) {
   } 
   const classes = useStyles();
   return (
-    <div style={{ marginTop: 10, padding: 30 }}>
-      <Grid container spacing={10} justify="center">
+    <div style={{ marginTop: 10, padding: 30 } }>
+      <Grid container spacing={5} justify="center">
         {proys.map(p => (
           <Grid item key={p.proyectoid}>
             <Card className={classes.card}>
@@ -47,16 +48,48 @@ function Proyectos(props) {
                   <Typography gutterBottom variant="h6" component="h2">
                     {'Total: '+p.cantstatus+' '+'Libres: 24'}
                   </Typography>
-                  <Typography gutterBottom variant="caption" component="h2">
-                    {'Mts2: '+p.mt2+' '+'Precio/Mts: '+p.precio_promedio}
-                  </Typography>
-                  <Typography gutterBottom variant="caption" component="h2">
-                    {'Ventas: '+p.precio+' '+'Cobrado: '+p.COBRADO}
-                  </Typography>
-                
-                  <Typography gutterBottom variant="caption" component="h2">
-                    {'Vencido: '+p.VENCIDO+' '+'xVencer: '+p.POR_VENCER}
-                  </Typography>
+                  <div style={{ display: "flex" }}>
+                    <Typography variant="subtitle2" color="grey" noWrap>
+                        Precio/Mt2:
+                      </Typography>
+                     <Typography variant="subtitle2" color="black" noWrap>
+                       {p.precio_promedio.toLocaleString('en')     }
+                     </Typography>
+                     <Typography variant="subtitle2" color="grey" noWrap>
+                     &nbsp;Mts2:
+                      </Typography>
+                     <Typography variant="subtitle2" color="black" noWrap>
+                       {p.mt2.toLocaleString('en')     }
+                     </Typography>
+                </div>
+                <div style={{ display: "flex" }}>
+                    <Typography variant="subtitle2" color="grey" noWrap>
+                        Ventas:
+                      </Typography>
+                     <Typography variant="subtitle2" color="black" noWrap>
+                       {p.precio.toLocaleString('en')     }
+                     </Typography>
+                     <Typography variant="subtitle2" color="grey" noWrap>
+                     &nbsp;Cobrado:
+                      </Typography>
+                     <Typography variant="subtitle2" color="black" noWrap>
+                       {p.COBRADO.toLocaleString('en')     }
+                     </Typography>
+                </div>
+                <div style={{ display: "flex" }}>
+                    <Typography variant="subtitle2" color="grey" noWrap>
+                        Vencido:
+                      </Typography>
+                     <Typography variant="subtitle2" color="black" noWrap>
+                       {p.VENCIDO.toLocaleString('en')     }
+                     </Typography>
+                     <Typography variant="subtitle2" color="grey" noWrap>
+                     &nbsp;xVencer:
+                      </Typography>
+                     <Typography variant="subtitle2" color="black" noWrap>
+                       {p.POR_VENCER.toLocaleString('en')     }
+                     </Typography>
+                </div>            
 
                 
                 </CardContent>
