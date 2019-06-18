@@ -32,11 +32,11 @@ function Proyectos(props) {
     <div style={{ marginTop: 10, padding: 30 } }>
       <Grid container spacing={5} justify="center">
       
-        {proyectos.map(p => {
+        {proyectos.map((p,index) => {
         if (p.nivel==2){
           console.log(p)
           return (    
-            <Grid item key={p.proyectoid}>
+            <Grid item key={index}>
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -60,6 +60,9 @@ function Proyectos(props) {
                      <Typography variant="subtitle2" color="black" noWrap>
                        {p.precio_promedio.toLocaleString('en')     }
                      </Typography>
+                     </div>
+                     <div style={{ display: "flex" }}>
+
                      <Typography variant="subtitle2" color="grey" noWrap>
                      &nbsp;Mts2:
                       </Typography>
@@ -74,6 +77,9 @@ function Proyectos(props) {
                      <Typography variant="subtitle2" color="black" noWrap>
                        {p.precio.toLocaleString('en')     }
                      </Typography>
+                     </div>
+                     <div style={{ display: "flex" }}>
+
                      <Typography variant="subtitle2" color="grey" noWrap>
                      &nbsp;Cobrado:
                       </Typography>
@@ -88,6 +94,9 @@ function Proyectos(props) {
                      <Typography variant="subtitle2" color="black" noWrap>
                        {p.vencido.toLocaleString('en')     }
                      </Typography>
+                     </div>
+                     <div style={{ display: "flex" }}>
+
                      <Typography variant="subtitle2" color="grey" noWrap>
                      &nbsp;xVencer:
                       </Typography>
