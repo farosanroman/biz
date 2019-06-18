@@ -11,7 +11,6 @@ import Box from '@material-ui/core/Box';
 //import { posts } from "./dummy-posts";´
 //https://reactgo.com/material-ui-react-tutorial/
 
-
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
