@@ -14,13 +14,15 @@ import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
+    maxWidth: 350,
   },
 });
 //const onClick = content => () => {
 //  setOpen(false);
 //  setContent(content);
 //};
+const style={   Paper:{padding:5,marginTop:5,marginBottom:5}
+}
 function Proyectos(props) {
   const goProyecto=(e)=>{
     //alert()
@@ -50,9 +52,12 @@ function Proyectos(props) {
                   <Typography gutterBottom variant="h5" component="h2">
                     {p.proyectoname}
                   </Typography>
+
                   <Typography gutterBottom variant="h6" component="h2">
                     {'Total: '+p.cantstatus}
                   </Typography>
+                  <Paper style={style.Paper}>
+
                   <div style={{ display: "flex" }}>
                     <Typography variant="subtitle2" color="grey" noWrap>
                         Precio/Mt2:
@@ -61,15 +66,21 @@ function Proyectos(props) {
                        {p.precio_promedio.toLocaleString('en')     }
                      </Typography>
                      </div>
+                     </Paper>
+                     <Paper style={style.Paper}>
+
                      <div style={{ display: "flex" }}>
 
                      <Typography variant="subtitle2" color="grey" noWrap>
-                     &nbsp;Mts2:
+                     Mts2:
                       </Typography>
                      <Typography variant="subtitle2" color="black" noWrap>
                        {p.mt2.toLocaleString('en')     }
                      </Typography>
                 </div>
+                </Paper>
+                <Paper style={style.Paper}>
+
                 <div style={{ display: "flex" }}>
                     <Typography variant="subtitle2" color="grey" noWrap>
                         Ventas:
@@ -78,15 +89,21 @@ function Proyectos(props) {
                        {p.precio.toLocaleString('en')     }
                      </Typography>
                      </div>
+                      </Paper>
+                      <Paper style={style.Paper}>
+
                      <div style={{ display: "flex" }}>
 
                      <Typography variant="subtitle2" color="grey" noWrap>
-                     &nbsp;Cobrado:
+                     Cobrado:
                       </Typography>
                      <Typography variant="subtitle2" color="black" noWrap>
                        {p.cobrado.toLocaleString('en')    }
                      </Typography>
                 </div>
+                 </Paper>
+                 <Paper style={style.Paper}>
+
                 <div style={{ display: "flex" }}>
                     <Typography variant="subtitle2" color="grey" noWrap>
                         Vencido:
@@ -95,16 +112,20 @@ function Proyectos(props) {
                        {p.vencido.toLocaleString('en')     }
                      </Typography>
                      </div>
+                 </Paper>
+                 <Paper style={style.Paper}>
+
                      <div style={{ display: "flex" }}>
 
                      <Typography variant="subtitle2" color="grey" noWrap>
-                     &nbsp;xVencer:
+                     xVencer:
                       </Typography>
+                      
                      <Typography variant="subtitle2" color="black" noWrap>
                        {p.porvencer.toLocaleString('en')     }
                      </Typography>
                 </div>    
-
+                </Paper>
                 
                 </CardContent>
               </CardActionArea>
@@ -124,6 +145,31 @@ function Proyectos(props) {
       }
 
       </Grid>
+      <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
     </div>
   );
 }
