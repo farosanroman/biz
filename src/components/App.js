@@ -7,7 +7,7 @@ import {Header,Footer} from './layouts/index'
 import Proyecto from './proyectos/proyecto'
 import Proyectos from './proyectos/proyectos'
 import ProyectoResumen from './proyectos/proyectoresumen'
-
+import Index2 from './proyectos/index'
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -78,6 +78,7 @@ class App extends Component{
       }        
    </div>
       <Footer/>
+      <Index2 ppa={'ppa'}/>
    </Fragment>
   );
 }
