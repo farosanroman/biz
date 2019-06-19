@@ -27,6 +27,7 @@ class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
+    criteria:{proyecto:0,nivel:2},  
     flagDisplayProyectos:true,
     flagDisplayProyecto:false,  
   };
@@ -37,6 +38,18 @@ class App extends Component{
       //alert()
       alert("login")
     } 
+    goNivel=(e)=>{
+      var newNivel=this.state.criteria.nivel-1
+      
+      if (this.state.criteria.nivel==0)newNivel=2;
+      var criteria=this.state.criteria;
+      criteria.nivel=newNivel;
+      this.setState({criteria:criteria})  
+      
+    
+      
+    } 
+
      goComponent=(e)=>{
       //alert('goProyecto')
       //alert(this.state.flagDisplayProyectos)
@@ -55,7 +68,7 @@ class App extends Component{
    //     const { auth, anchorEl } = this.state;
    // const open = Boolean(anchorEl);
 
-   const {flagDisplayProyectos,flagDisplayProyecto}=this.state
+   const {criteria,flagDisplayProyectos,flagDisplayProyecto}=this.state
    //const FixedPosition = withStyles(styles)(({ classes }) => (
      
    //
@@ -68,17 +81,17 @@ class App extends Component{
     <Header goComponent={this.goComponent}/>
       <div className={classes.root}>
        {flagDisplayProyectos&&
-   <Proyectos goComponent={this.goComponent}/>
+   <Proyectos criteria={criteria} goNivel={this.goNivel}/>
       }
           {flagDisplayProyecto&&
-   <ProyectoResumen />    
+   <ProyectoResumen criteria={criteria} />    
       }
       {flagDisplayProyecto&&
    <Proyecto  goComponent={this.goComponent}/>
       }        
    </div>
       <Footer/>
-      <Index2 ppa={'ppa'}/>
+      <Index2 ppa={'autenticado'}/>
    </Fragment>
   );
 }

@@ -80,6 +80,8 @@ const MyToolbar = withStyles(styles)(
               >
                   <MenuItem onClick={this.goComponent}>Proyectos</MenuItem>
                   <MenuItem onClick={this.goComponent}>Proyecto</MenuItem>
+                  <MenuItem onClick={this.goComponent}>Flujo Caja</MenuItem>
+                  <MenuItem onClick={this.goComponent}>Proyecciones</MenuItem>
   
               </Menu>
               <Typography
