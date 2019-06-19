@@ -16,12 +16,15 @@ const useStyles = makeStyles({
   card: {
     maxWidth: 350,
   },
+ // toolbarMargin: theme.mixins.toolbar
 });
 //const onClick = content => () => {
 //  setOpen(false);
 //  setContent(content);
 //};
 const style={   Paper:{padding:1,marginTop:1,marginBottom:1}
+}
+const style2={   Paper:{padding:1,marginTop:1,marginBottom:10,height:80}
 }
 function Proyectos(props) {
   //alert(JSON.stringify(props.criteria))
@@ -72,14 +75,23 @@ function Proyectos(props) {
                   title="Proyecto Inmobiliario"
                 />
                 <CardContent >
-                  <Typography gutterBottom variant="h5" component="h2">
+                <Paper style={style2.Paper}>
+
+                  <Typography gutterBottom variant="h6" component="h2">
                     {p.proyectoname}
                   </Typography>
-
+                </Paper>
                   <Typography gutterBottom variant="h6" component="h2">
                     {p.status+' '+p.cantstatus}
                   </Typography>
-               
+                  <Paper style={style.Paper}>
+                 <table width="100%">
+                   <tr><td>
+                      <Typography  variant="subtitle2">Ventas:</Typography>
+                  </td><td align="right">
+                      <Typography  variant="subtitle2"> {p.precio.toLocaleString('en')     }</Typography>
+                  </td></tr></table>
+                  </Paper> 
                   <Paper style={style.Paper}>
                  <table width="100%">
                    <tr><td>
@@ -107,15 +119,8 @@ function Proyectos(props) {
                   </td></tr></table>
                   </Paper> 
                 
-                  <Paper style={style.Paper}>
-                 <table width="100%">
-                   <tr><td>
-                      <Typography  variant="subtitle2">Ventas:</Typography>
-                  </td><td align="right">
-                      <Typography  variant="subtitle2"> {p.precio.toLocaleString('en')     }</Typography>
-                  </td></tr></table>
-                  </Paper> 
-                
+                 
+                  <br/>
                   <Paper style={style.Paper}>
                  <table width="100%">
                    <tr><td>
