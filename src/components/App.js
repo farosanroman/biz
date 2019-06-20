@@ -5,6 +5,8 @@ import React, {Component,Fragment}  from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import {Header,Footer} from './layouts/index'
 import Proyecto from './proyectos/proyecto'
+import Presupuesto from './proyectos/presupuesto'
+
 import Proyectos from './proyectos/proyectos'
 import ProyectoResumen from './proyectos/proyectoresumen'
 import Index2 from './proyectos/index'
@@ -28,8 +30,9 @@ class App extends Component{
     super(props);
     this.state = {
     criteria:{proyecto:0,nivel:2},  
-    flagDisplayProyectos:true,
-    flagDisplayProyecto:false,  
+    flagDisplayProyectos:false,
+    flagDisplayProyecto:false,
+    flagDisplayPresupuesto:true,  
   };
   }
  
@@ -75,7 +78,7 @@ class App extends Component{
    //     const { auth, anchorEl } = this.state;
    // const open = Boolean(anchorEl);
 
-   const {criteria,flagDisplayProyectos,flagDisplayProyecto}=this.state
+   const {criteria,flagDisplayProyectos,flagDisplayProyecto,flagDisplayPresupuesto}=this.state
    //const FixedPosition = withStyles(styles)(({ classes }) => (
      
    //
@@ -95,7 +98,10 @@ class App extends Component{
       }
       {flagDisplayProyecto&&
    <Proyecto  goComponent={this.goComponent}/>
-      }        
+      }     
+        {flagDisplayPresupuesto&&
+   <Presupuesto />
+      }   
    </div>
       <Footer/>
       <Index2 ppa={'autenticado'}/>
