@@ -9,6 +9,14 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Box from '@material-ui/core/Box';
 import proyectos from '../../data/proyectos'
+//import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+
+//import {Delete} from 'material-ui-icons'
+//import {ICONS} from '../../data/icons'
+import Icon from './icon';
 //import { posts } from "./dummy-posts";´
 //https://reactgo.com/material-ui-react-tutorial/
 //alert(JSON.stringify(proyectos))
@@ -26,12 +34,18 @@ const style={   Paper:{padding:1,marginTop:1,marginBottom:1}
 }
 const style2={   Paper:{padding:1,marginTop:1,marginBottom:10,height:80}
 }
+const styleStatus={   Paper:{padding:1,marginTop:1,marginBottom:10,height:80,color:'red'}
+}
 function Proyectos(props) {
   //alert(JSON.stringify(props.criteria))
 
   const goDown=(e)=>{
     //alert("goDown")
     props.goNivel("down");
+  } 
+  const goUp=(e)=>{
+    //alert("goDown")
+    props.goNivel("up");
   } 
   const classes = useStyles();
   var proyectonivel=[]
@@ -58,12 +72,14 @@ function Proyectos(props) {
   }
   return (
     <div style={{ marginTop: 10, padding: 30 } }>
+    
       <Grid container spacing={5} justify="center">
       
         {proyectonivel.map((p,index) => {
         //if (p.nivel==2){
          // console.log(p)
           return (    
+           
             <Grid item key={index}>
             <Card className={classes.card}>
               <CardActionArea>
@@ -71,7 +87,7 @@ function Proyectos(props) {
                   component="img"
                   alt="Proyecto Inmobiliario"
                   height="140"
-                  image={'https://static.wixstatic.com/media/b2fe93_e957b2661fa64c9cbd38682f76370147~mv2_d_3200_2950_s_4_2.jpg/v1/crop/x_0,y_722,w_3200,h_2107/fill/w_372,h_240,al_c,q_80,usm_0.66_1.00_0.01/b2fe93_e957b2661fa64c9cbd38682f76370147~mv2_d_3200_2950_s_4_2.webp'}
+                  image={'https://static.wixstatic.com/media/b2fe93_6e6425b8c8194513b2be40fdd9483b26~mv2_d_2500_1607_s_2.jpg/v1/crop/x_26,y_0,w_2441,h_1607/fill/w_372,h_240,al_c,q_80,usm_0.66_1.00_0.01/b2fe93_6e6425b8c8194513b2be40fdd9483b26~mv2_d_2500_1607_s_2.webp'}
                   title="Proyecto Inmobiliario"
                 />
                 <CardContent >
@@ -81,13 +97,15 @@ function Proyectos(props) {
                     {p.proyectoname}
                   </Typography>
                 </Paper>
-                  <Typography gutterBottom variant="h6" component="h2">
+                <div style={{color:p.colorstatus}}>
+                  <Typography gutterBottom variant="h6" component="h2" >
                     {p.status+' '+p.cantstatus}
                   </Typography>
+                  </div>
                   <Paper style={style.Paper}>
                  <table width="100%">
                    <tr><td>
-                      <Typography  variant="subtitle2">Ventas:</Typography>
+                      <Typography  variant="subtitle2">Precios Sumarizados:</Typography>
                   </td><td align="right">
                       <Typography  variant="subtitle2"> {p.precio.toLocaleString('en')     }</Typography>
                   </td></tr></table>
@@ -154,11 +172,31 @@ function Proyectos(props) {
                 </CardContent>
               </CardActionArea>
               <CardActions>
-                <Button size="small" color="primary"
-                onClick={()=>goDown()}
+            
+          
+              <IconButton
+                  color="primary"
+                 // className={classes.button}
+                  aria-label="Upload picture"
+                 component="span"
+                 onClick={()=>goDown()}
                 >
-                  Detalles
-                </Button>
+                                  <Icon icon={'down'} />
+                    
+                </IconButton>
+                <IconButton
+                  color="primary"
+                 // className={classes.button}
+                  aria-label="Upload picture"
+                 component="span"
+                 onClick={()=>goUp()}
+                >
+                  
+                                  <Icon icon={'up'} />
+                    
+                </IconButton>
+                
+
                
               </CardActions>
             </Card>

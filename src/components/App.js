@@ -39,13 +39,20 @@ class App extends Component{
       alert("login")
     } 
     goNivel=(e)=>{
+     // alert(e)
+      if (e=="down"){
       var newNivel=this.state.criteria.nivel-1
       
       if (this.state.criteria.nivel==0)newNivel=2;
       var criteria=this.state.criteria;
       criteria.nivel=newNivel;
       this.setState({criteria:criteria})  
-      
+      }else{
+        var criteria=this.state.criteria;
+        criteria.nivel=2;
+        this.setState({criteria:criteria})  
+          
+      }
     
       
     } 
