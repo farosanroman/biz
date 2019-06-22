@@ -21,6 +21,7 @@ import Icon from './icon';
 //https://reactgo.com/material-ui-react-tutorial/
 //https://www.freecodecamp.org/news/meet-your-material-ui-your-new-favorite-user-interface-library-6349a1c88a8c/
 //https://www.youtube.com/watch?v=xm4LX5fJKZ8&list=PLcCp4mjO-z98WAu4sd0eVha1g-NMfzHZk
+//https://stackoverflow.com/questions/53959220/how-to-align-two-react-components-horizontally
 //alert(JSON.stringify(proyectos))
 const useStyles = makeStyles({
   card: {

@@ -4,7 +4,42 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography } from "@material-ui/core";
 //import Leftpane from './leftPane';
 //import Rightpane from './rightPane';
+//
+/*
+https://stackoverflow.com/questions/53959220/how-to-align-two-react-components-horizontally
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+const styles = theme => ({
+  root: {
+  flexGrow: 1,
+},
+paper: {
+  padding: theme.spacing.unit * 2,
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+},
+});
+class App extends Component {
+  render() {
+    const { classes } = this.props;
 
+    return (
+      <div className={classes.root}>
+        <Grid container spacing={24}>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>xs=6</Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>xs=6</Paper>
+          </Grid>
+        </Grid>
+      </div>
+  );
+}
+}
+*/
 const styles = theme => ({
   Paper: {padding: 20,marginTop: 5,height: 1000,overflowY: 'auto'}
 });
