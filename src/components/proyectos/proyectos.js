@@ -19,6 +19,8 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import Icon from './icon';
 //import { posts } from "./dummy-posts";´
 //https://reactgo.com/material-ui-react-tutorial/
+//https://www.freecodecamp.org/news/meet-your-material-ui-your-new-favorite-user-interface-library-6349a1c88a8c/
+//https://www.youtube.com/watch?v=xm4LX5fJKZ8&list=PLcCp4mjO-z98WAu4sd0eVha1g-NMfzHZk
 //alert(JSON.stringify(proyectos))
 const useStyles = makeStyles({
   card: {

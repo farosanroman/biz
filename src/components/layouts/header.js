@@ -48,12 +48,30 @@ const MyToolbar = withStyles(styles)(
         this.setState({ anchor: null })
          
     };
-    goComponent=(e)=>{
+    goComponentV=(e)=>{
         this.setState({ anchor: null })
       
 //      alert()
-      this.props.goComponent()
+      this.props.goComponent(0)
      }
+     goComponentD=(e)=>{
+      this.setState({ anchor: null })
+    
+//      alert()
+    this.props.goComponent(1)
+   }
+   goComponentP=(e)=>{
+    this.setState({ anchor: null })
+  
+//      alert()
+  this.props.goComponent(2)
+ }
+ goComponentF=(e)=>{
+  this.setState({ anchor: null })
+
+//      alert()
+this.props.goComponent(3)
+}
     render() {
       const { classes, title, MenuItems, RightButton } = this.props;
 
@@ -78,10 +96,10 @@ const MyToolbar = withStyles(styles)(
                 open={Boolean(this.state.anchor)}
                 onClose={this.closeMenu}
               >
-                  <MenuItem onClick={this.goComponent}>Proyectos</MenuItem>
-                  <MenuItem onClick={this.goComponent}>Proyecto</MenuItem>
-                  <MenuItem onClick={this.goComponent}>Flujo Caja</MenuItem>
-                  <MenuItem onClick={this.goComponent}>Proyecciones</MenuItem>
+                  <MenuItem onClick={this.goComponentV}>Proyectos</MenuItem>
+                  <MenuItem onClick={this.goComponentD}>Proyecto</MenuItem>
+                  <MenuItem onClick={this.goComponentP}>Presupuesto</MenuItem>
+                  <MenuItem onClick={this.goComponentF}>Fotos</MenuItem>
   
               </Menu>
               <Typography

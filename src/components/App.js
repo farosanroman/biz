@@ -6,9 +6,10 @@ import { withStyles } from '@material-ui/core/styles';
 import {Header,Footer} from './layouts/index'
 import Proyecto from './proyectos/proyecto'
 import Presupuesto from './proyectos/presupuesto'
-
+import Fotos from './proyectos/fotos'
 import Proyectos from './proyectos/proyectos'
 import ProyectoResumen from './proyectos/proyectoresumen'
+import Cohete from './proyectos/cohete'
 import Index2 from './proyectos/index'
 const styles = theme => ({
   root: {
@@ -30,9 +31,13 @@ class App extends Component{
     super(props);
     this.state = {
     criteria:{proyecto:0,nivel:2},  
+    flagDisplayCohete:true,
+    
     flagDisplayProyectos:false,
     flagDisplayProyecto:false,
-    flagDisplayPresupuesto:true,  
+    flagDisplayPresupuesto:false,
+    flagDisplayFotos:false
+            
   };
   }
  
@@ -61,14 +66,22 @@ class App extends Component{
     } 
 
      goComponent=(e)=>{
+     
       //alert('goProyecto')
       //alert(this.state.flagDisplayProyectos)
-      if (this.state.flagDisplayProyectos){
-        this.setState({flagDisplayProyectos:false,flagDisplayProyecto:true})  
+      if (e==0){
+        this.setState({flagDisplayCohete:false,flagDisplayProyectos:true,flagDisplayProyecto:false,flagDisplayPresupuesto:false,flagDisplayFotos:false})  
       }
-      else{
-        this.setState({flagDisplayProyectos:true,flagDisplayProyecto:false})
-    }
+      if (e==1){
+        this.setState({flagDisplayCohete:false,flagDisplayProyectos:false,flagDisplayProyecto:true,flagDisplayPresupuesto:false,flagDisplayFotos:false})  
+      }
+      if (e==2){
+        this.setState({flagDisplayCohete:false,flagDisplayProyectos:false,flagDisplayProyecto:false,flagDisplayPresupuesto:true,flagDisplayFotos:false})  
+      }
+      if (e==3){
+        this.setState({flagDisplayCohete:false,flagDisplayProyectos:false,flagDisplayProyecto:false,flagDisplayPresupuesto:false,flagDisplayFotos:true})  
+      }
+     
       
     } 
   render ()
@@ -78,7 +91,7 @@ class App extends Component{
    //     const { auth, anchorEl } = this.state;
    // const open = Boolean(anchorEl);
 
-   const {criteria,flagDisplayProyectos,flagDisplayProyecto,flagDisplayPresupuesto}=this.state
+   const {criteria,flagDisplayProyectos,flagDisplayProyecto,flagDisplayPresupuesto,flagDisplayFotos,flagDisplayCohete}=this.state
    //const FixedPosition = withStyles(styles)(({ classes }) => (
      
    //
@@ -89,6 +102,9 @@ class App extends Component{
    return (
     <Fragment>
     <Header goComponent={this.goComponent}/>
+    {flagDisplayCohete&&
+   <Cohete criteria={criteria} />
+      }
       <div className={classes.root}>
        {flagDisplayProyectos&&
    <Proyectos criteria={criteria} goNivel={this.goNivel}/>
@@ -101,6 +117,9 @@ class App extends Component{
       }     
         {flagDisplayPresupuesto&&
    <Presupuesto />
+      } 
+      {flagDisplayFotos&&
+   <Fotos />
       }   
    </div>
       <Footer/>
