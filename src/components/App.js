@@ -11,6 +11,7 @@ import Proyectos from './proyectos/proyectos'
 import ProyectoResumen from './proyectos/proyectoresumen'
 import Cohete from './proyectos/cohete'
 import Index2 from './proyectos/index'
+import Diario from './libros/diario'
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -31,8 +32,8 @@ class App extends Component{
     super(props);
     this.state = {
     criteria:{proyecto:0,nivel:2},  
-    flagDisplayCohete:true,
-    
+    flagDisplayCohete:false,
+    flagDisplayDiario:true,
     flagDisplayProyectos:false,
     flagDisplayProyecto:false,
     flagDisplayPresupuesto:false,
@@ -91,7 +92,7 @@ class App extends Component{
    //     const { auth, anchorEl } = this.state;
    // const open = Boolean(anchorEl);
 
-   const {criteria,flagDisplayProyectos,flagDisplayProyecto,flagDisplayPresupuesto,flagDisplayFotos,flagDisplayCohete}=this.state
+   const {criteria,flagDisplayDiario,flagDisplayProyectos,flagDisplayProyecto,flagDisplayPresupuesto,flagDisplayFotos,flagDisplayCohete}=this.state
    //const FixedPosition = withStyles(styles)(({ classes }) => (
      
    //
@@ -106,7 +107,12 @@ class App extends Component{
    <Cohete criteria={criteria} />
       }
       <div className={classes.root}>
+      {flagDisplayDiario&&
+   
+   <Diario criteria={criteria} goNivel={this.goNivel}/>
+      }
        {flagDisplayProyectos&&
+   
    <Proyectos criteria={criteria} goNivel={this.goNivel}/>
       }
           {flagDisplayProyecto&&

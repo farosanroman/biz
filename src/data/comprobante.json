@@ -1,0 +1,32 @@
+{"comprobante":
+[
+
+    {
+      "cia": "000AVSC",
+      "pos": 1,
+      "cuenta": 13206010201011,
+      "cuentanombre": "Otras Personas Juridicas - Contrartos de Prestamos de TVD - Por el derecho de recibir el VM de la Ca",
+      "ta": "CL",
+      "tanombre": "CLIENTE",
+      "auxi": "0COD003",
+      "auxinombre": "CODINO INC     II",
+      "fecha": "Mar  4 2019 12:00AM",
+      "debito": 2085,
+      "credito": 0
+    },
+    {
+      "cia": "000AVSC",
+      "pos": 2,
+      "cuenta": 51501020101011,
+      "cuentanombre": "Gtos pasivos Financ. Index. a TVd Perdida x Ajuste a Valor de Mercado",
+      "ta": "CL",
+      "tanombre": "CLIENTE",
+      "auxi": "0COD003",
+      "auxinombre": "CODINO INC     II",
+      "fecha": "Mar  4 2019 12:00AM",
+      "debito": 0,
+      "credito": 2085
+    }
+   
+  ]
+}
