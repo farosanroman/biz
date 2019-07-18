@@ -25,21 +25,23 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Footer() {
+export default function Footer(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   function handleChange(event, newValue) {
     setValue(newValue);
+    //alert("hande")
+    props.goModulo(newValue)
   }
-
+  //const tabs=["Presupuesto","Ventas"]
+  const tabs=props.tabs
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} centered>
-          <Tab label="Venezuela" />
-          <Tab label="Uruguay" />
-          <Tab label="Paraguay" />
+        {tabs.map(t => <Tab key={t} label={t} />)}
+          
         </Tabs>
       </AppBar>
       {value === 0 && <TabContainer>Item One</TabContainer>}

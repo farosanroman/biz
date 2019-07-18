@@ -16,7 +16,7 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 //import {Delete} from 'material-ui-icons'
 //import {ICONS} from '../../data/icons'
-import Icon from './icon';
+import Icon from '../tools/icon';
 //import { posts } from "./dummy-posts";´
 //https://reactgo.com/material-ui-react-tutorial/
 //https://www.freecodecamp.org/news/meet-your-material-ui-your-new-favorite-user-interface-library-6349a1c88a8c/

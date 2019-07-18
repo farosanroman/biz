@@ -72,13 +72,19 @@ const MyToolbar = withStyles(styles)(
 //      alert()
 this.props.goComponent(3)
 }
+goComponentDiario=(e)=>{
+ // this.setState({ anchor: null })
+
+//     alert()
+this.props.goComponent(4)
+}
     render() {
       const { classes, title, MenuItems, RightButton } = this.props;
 
       return (
         <Fragment>
           <AppBar>
-            <Toolbar>
+            <Toolbar color={'red'}>
               <IconButton
                  className={classes.menuButton}
                 color="inherit"
@@ -100,6 +106,7 @@ this.props.goComponent(3)
                   <MenuItem onClick={this.goComponentD}>Proyecto</MenuItem>
                   <MenuItem onClick={this.goComponentP}>Presupuesto</MenuItem>
                   <MenuItem onClick={this.goComponentF}>Fotos</MenuItem>
+                  <MenuItem onClick={this.goComponentDiario}>Diarios</MenuItem>
   
               </Menu>
               <Typography

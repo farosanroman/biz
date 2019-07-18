@@ -7,16 +7,12 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import DialogActions from '@material-ui/core/DialogActions';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import CloseIcon from '@material-ui/icons/Close';
-import Slide from '@material-ui/core/Slide';
 import MaterialTable from 'material-table';
 import TextField from '@material-ui/core/TextField';
+
+//import Paper from 'material-ui/Paper'
+//i//mport Collapse from 'material-ui/transitions/Collapse'
 //import {comprobante} from '../../data/comprobante.json';
 import {cuentasjson} from '../../data/cuentas.json';
 //alert(JSON.stringify(cuentas))
@@ -43,7 +39,7 @@ export default function MaterialTableDemo() {
         //value={props.value === props ? '' : props.value}
         onChange={event => {
         //alert(event.target.value)
-        if (event.target.value.length==3){
+        if (event.target.value.length>2){
            setFlags({flagComprobante:false,flagCuentas:true,substringCuentas:event.target.value,flagAuxiliar:false});
         }
             //onChange(event.target.value)
@@ -61,13 +57,21 @@ export default function MaterialTableDemo() {
   useEffect(async() => {
     // Update the document title using the browser API
     //alert()
-    const response=await fetch("https://geofaro.azurewebsites.net/api/BorrarGet?code=IapQBqwu44g4BQ1V22/cRgGEut17fRz8QLsrLRJCDS7pKa53Y0e5ZQ==")
+    const abortController=new AbortController()
+    const signal=abortController.signal
+    const response=await fetch("https://geofaro.azurewebsites.net/api/BorrarGet?code=IapQBqwu44g4BQ1V22/cRgGEut17fRz8QLsrLRJCDS7pKa53Y0e5ZQ==",{signal:signal})
     const data=await response.json()
     //alert(JSON.stringify(data))
     setComprobante(data)
     setFlags({flagComprobante:true,flagCuentas:false,substringCuentas:"",flagAuxiliar:false})
     setState({ ...state, data });
+
+    return function cleanup(){
+       abortController.abort()
+    }
   },[]);
+
+
   const onChange=(e)=>{
     //alert("goDown")
     //alert(cuentas)
@@ -76,10 +80,20 @@ export default function MaterialTableDemo() {
     setFlags({flagCuentas:false,flagAuxiliar:false});
   }
  // alert(JSON.stringify(cuentas))
+ //const StyledDialog = withStyles(
+ //  { root: { pointerEvents: "none", }, 
+ //paper: { pointerEvents: "auto" } })
+
+ //(props => <Dialog hideBackdrop {...props} />);
+ 
   return (
 
       <div>
-    <Dialog  open={flags.flagCuentas} >
+
+
+    <Dialog  open={flags.flagCuentas} hideBackdrop= {{ 
+      root: { pointerEvents: "none", },  paper: { pointerEvents: "auto" } }}
+       >
     <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
     <Button color="inherit" onClick={handleClose}>
               save

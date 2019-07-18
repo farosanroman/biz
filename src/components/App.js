@@ -8,10 +8,12 @@ import Proyecto from './proyectos/proyecto'
 import Presupuesto from './proyectos/presupuesto'
 import Fotos from './proyectos/fotos'
 import Proyectos from './proyectos/proyectos'
+import Presupuestos from './presupuestos/presupuestos'
 import ProyectoResumen from './proyectos/proyectoresumen'
 import Cohete from './proyectos/cohete'
 import Index2 from './proyectos/index'
 import Diario from './libros/diario'
+import UnderstandingBreakpoints from './libros/grids'
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -26,14 +28,17 @@ const styles = theme => ({
   toolbarMargin: theme.mixins.toolbar
 });
 //const classes = useStyles();
-
+const modulos=[
+  {id:0,nombre:"Presupuesto"},
+  {id:1,nombre:"Ventas"}
+]
 class App extends Component{
   constructor(props) {
     super(props);
     this.state = {
-    criteria:{proyecto:0,nivel:2},  
-    flagDisplayCohete:false,
-    flagDisplayDiario:true,
+    criteria:{modulo:0,proyecto:0,nivel:2}, //modulo 0 inicio modulo 1 presupeustos modulo 2 ventas 
+    flagDisplayCohete:true,
+    flagDisplayDiario:false,
     flagDisplayProyectos:false,
     flagDisplayProyecto:false,
     flagDisplayPresupuesto:false,
@@ -47,6 +52,9 @@ class App extends Component{
       //alert()
       alert("login")
     } 
+    goModulo=(e)=>{
+      alert('goModulo '+e)
+    }
     goNivel=(e)=>{
      // alert(e)
       if (e=="down"){
@@ -71,18 +79,22 @@ class App extends Component{
       //alert('goProyecto')
       //alert(this.state.flagDisplayProyectos)
       if (e==0){
-        this.setState({flagDisplayCohete:false,flagDisplayProyectos:true,flagDisplayProyecto:false,flagDisplayPresupuesto:false,flagDisplayFotos:false})  
+        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:true,flagDisplayProyectos:true,flagDisplayProyecto:false,flagDisplayFotos:false,flagDisplayDiario:false})  
       }
       if (e==1){
-        this.setState({flagDisplayCohete:false,flagDisplayProyectos:false,flagDisplayProyecto:true,flagDisplayPresupuesto:false,flagDisplayFotos:false})  
+        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:false,flagDisplayProyectos:false,flagDisplayProyecto:true,flagDisplayFotos:false,flagDisplayDiario:false})  
       }
       if (e==2){
-        this.setState({flagDisplayCohete:false,flagDisplayProyectos:false,flagDisplayProyecto:false,flagDisplayPresupuesto:true,flagDisplayFotos:false})  
+        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:false,flagDisplayProyectos:false,flagDisplayProyecto:false,flagDisplayFotos:false,flagDisplayDiario:false})  
       }
       if (e==3){
-        this.setState({flagDisplayCohete:false,flagDisplayProyectos:false,flagDisplayProyecto:false,flagDisplayPresupuesto:false,flagDisplayFotos:true})  
+        
+        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:false,flagDisplayProyectos:false,flagDisplayProyecto:false,flagDisplayFotos:true,flagDisplayDiario:false})  
       }
-     
+      if (e==4){
+        
+        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:false,flagDisplayProyectos:false,flagDisplayProyecto:false,flagDisplayFotos:false,flagDisplayDiario:true})  
+      }
       
     } 
   render ()
@@ -96,21 +108,24 @@ class App extends Component{
    //const FixedPosition = withStyles(styles)(({ classes }) => (
      
    //
-   const {classes} = this.props;
+   const {classes} = this.props;////<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<ojo
    //alert(JSON.stringify(classes))
  //      <div className={classes.toolbarMargin} />
  
    return (
     <Fragment>
     <Header goComponent={this.goComponent}/>
+    <div className={classes.root}>
+     
     {flagDisplayCohete&&
    <Cohete criteria={criteria} />
       }
-      <div className={classes.root}>
+      <Presupuestos />
       {flagDisplayDiario&&
    
    <Diario criteria={criteria} goNivel={this.goNivel}/>
-      }
+   }
+   
        {flagDisplayProyectos&&
    
    <Proyectos criteria={criteria} goNivel={this.goNivel}/>
@@ -128,8 +143,13 @@ class App extends Component{
    <Fotos />
       }   
    </div>
-      <Footer/>
+      <Footer goModulo={this.goModulo} tabs={["Presupuestos","Ventas","FCaja"]}/>
       <Index2 ppa={'autenticado'}/>
+    
+   {false&&
+   <UnderstandingBreakpoints />
+   }
+  }
    </Fragment>
   );
 }
