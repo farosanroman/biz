@@ -10,14 +10,25 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Box from '@material-ui/core/Box';
 import proyectos from '../../data/proyectos'
-//import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-
-//import {Delete} from 'material-ui-icons'
-//import {ICONS} from '../../data/icons'
 import Icon from '../tools/icon';
+
+import Chart , {
+  ArgumentAxis,
+  ArgumentAxisLabel,
+  CommonSeriesSettings,
+  Legend,
+  Label,
+  Series,
+  Tooltip,
+  ValueAxis,
+  ValueAxisConstantLine,
+  ValueAxisConstantLineLabel,
+  ValueAxisLabel,
+  Grid as GridDE,
+  Title,Subtitle,
+  ConstantLine,Size as SizeS,
+  CommonPaneSettings,Border
+} from 'devextreme-react/chart';
 //import { posts } from "./dummy-posts";´
 //https://reactgo.com/material-ui-react-tutorial/
 //https://www.freecodecamp.org/news/meet-your-material-ui-your-new-favorite-user-interface-library-6349a1c88a8c/
@@ -52,16 +63,29 @@ function Presupuestos(props) {
     props.goNivel("up");
   } 
   const classes = useStyles();
-  var proyectonivel=[]
-
-
+ const ddaattaa=[]
+ ddaattaa.push({fecha:new Date(2018,1,1,1),cant:4,acum:4})
+ ddaattaa.push({fecha:new Date(2018,1,1,5),cant:6,acum:10})
+ ddaattaa.push({fecha:new Date(2018,1,1,7),cant:8,acum:18})
+ ddaattaa.push({fecha:new Date(2018,1,1,12),cant:12,acum:23})
+ const data2=[]
+ 
+ data2.push({actividad:1,blanco:6,azul:8,blanco2:7,verde:10})
+ 
+ data2.push({actividad:2,blanco:4,azul:2,blanco2:3,verde:5})
+ data2.push({actividad:3,blanco:3,azul:4,blanco2:3,verde:5})
+ // type: 'horizontalBar',
+//https://github.com/mui-org/material-ui/issues/15066
   return (
     <div style={{ marginTop: 10, padding: 30 } }>
  <div className={classes.root}>
+
+
+
   <Grid container spacing={3}>
   <Grid item xs={12} sm={6} md={3}>
       <Paper className={classes.paper}>
-      <Card className={classes.card}>
+      <Card className={classes.card} raised color="red"   backgroundColor= "primary">
       <CardActionArea>
        
         <CardContent>
@@ -83,7 +107,7 @@ function Presupuestos(props) {
     </Grid>
     <Grid item xs={12} sm={6} md={3}>
       <Paper className={classes.paper}>
-      <Card className={classes.card}>
+      <Card className={classes.card} raised >
       <CardActionArea>
        
         <CardContent>
@@ -107,7 +131,7 @@ function Presupuestos(props) {
     </Grid>
         <Grid item xs={12} sm={6} md={3}>
       <Paper className={classes.paper}>
-      <Card className={classes.card}>
+      <Card className={classes.card} raised >
       <CardActionArea>
        
         <CardContent>
@@ -130,7 +154,7 @@ function Presupuestos(props) {
       </Paper>
     </Grid>    <Grid item xs={12} sm={6} md={3}>
       <Paper className={classes.paper}>
-      <Card className={classes.card}>
+      <Card className={classes.card} raised >
       <CardActionArea>
        
         <CardContent>
@@ -153,6 +177,108 @@ function Presupuestos(props) {
     </Grid>
  
 
+    <Grid item xs={12} sm={6} md={6}>
+      <Paper className={classes.paper}>
+      <Chart         
+            
+               dataSource={ddaattaa}
+               id={'serie'}
+          >
+           <SizeS height={400} width={400} />
+           <ValueAxis
+            grid={{ opacity: 0.2 }}
+            valueType={'currency'}
+          />
+           <CommonSeriesSettings
+            argumentField={'fecha'}
+            type={'line'}
+          />
+         <ArgumentAxis
+            valueMarginsEnabled={false}
+            discreteAxisDivisionMode={'crossLabels'}            
+          >
+          <Label format={'HH:mm'} />
+            <Grid visible={true} />
+          </ArgumentAxis>
+          <CommonPaneSettings>
+            <Border
+              visible={true}
+              width={3}
+              top={false}
+              right={false}
+            />
+          </CommonPaneSettings>
+          <Series key={'2'} valueField={'acum'} color={'lightgrey'} name={'acumulado'} type={'area'}/>
+       
+        <Series key={'1'} valueField={'cant'} color={'deepskyblue'} name={'cantidad'} type={'bar'}/>
+        <Series key={'3'} valueField={'polidata'} color={'darkorange'} name={'polidata'} type={'bar'}/>
+      
+        <Grid visible={true} />
+        
+          <Legend
+            verticalAlignment={'bottom'}
+            horizontalAlignment={'center'}
+            itemTextPosition={'bottom'}
+            visible={true}
+          />
+         
+          <Title text={'Costos'}>
+            <Subtitle text={'(Acumulado)'} />
+          </Title>
+          <Tooltip
+          enabled={true}
+          shared={true}
+        />
+
+      </Chart>
+
+      </Paper>
+    </Grid>
+    <Grid item xs={12} sm={6} md={6}>
+      <Paper className={classes.paper}>
+      <Chart               
+               dataSource={data2}
+               id={'serie'}
+             rotated={true}
+              // type={'horizontalBar'}
+          >
+           <SizeS height={400} width={400} />     
+ 
+          <CommonSeriesSettings argumentField={'actividad'}  type={'stackedbar'}    />
+
+        <Series key={'1'} valueField={'blanco'} color={'white'} name={''} stack={"orig"}/>
+        <Series key={'2'} valueField={'azul'} color={'deepskyblue'} name={'Original'} stack={"orig"} />
+        <Series key={'3'} valueField={'blanco2'} color={'white'} name={''} stack={"act"}/>
+        <Series key={'4'} valueField={'verde'} color={'green'} name={'Actual'} stack={"act"} />
+
+        <Grid visible={true} />
+        
+        <Legend
+          verticalAlignment={'bottom'}
+          horizontalAlignment={'center'}
+        />
+         
+          <Title text={'Diagrama GANTT'}>
+            <Subtitle text={'(Actividades)'} />
+          </Title>
+          <Tooltip
+          enabled={true}
+          shared={true}
+        />
+          <CommonPaneSettings>
+            <Border
+              visible={true}
+              width={3}
+              top={false}
+              right={false}
+            />
+          </CommonPaneSettings>
+         
+      </Chart>
+      </Paper>
+    </Grid>
+
+
     <Grid item xs={12} sm={4} md={4}>
       <Paper className={classes.paper}>xs=12 sm=4 md=4</Paper>
     </Grid>
@@ -162,12 +288,7 @@ function Presupuestos(props) {
       <Paper className={classes.paper}>xs=12 sm=4 md=4</Paper>
     </Grid>
 
-    <Grid item xs={12} sm={6} md={6}>
-      <Paper className={classes.paper}>xs=12 sm=6 md=6</Paper>
-    </Grid>
-    <Grid item xs={12} sm={6} md={6}>
-      <Paper className={classes.paper}>xs=12 sm=6 md=6</Paper>
-    </Grid>
+
   </Grid>
 </div>    
     </div>

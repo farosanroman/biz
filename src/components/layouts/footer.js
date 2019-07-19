@@ -40,7 +40,7 @@ export default function Footer(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs value={value} onChange={handleChange} centered>
-        {tabs.map(t => <Tab key={t} label={t} />)}
+        {tabs.map(t => <Tab key={t.id} label={t.nombre} />)}
           
         </Tabs>
       </AppBar>

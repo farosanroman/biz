@@ -30,7 +30,8 @@ const styles = theme => ({
 //const classes = useStyles();
 const modulos=[
   {id:0,nombre:"Presupuesto"},
-  {id:1,nombre:"Ventas"}
+  {id:1,nombre:"Ventas"},
+  {id:2,nombre:"Viviendas"}
 ]
 class App extends Component{
   constructor(props) {
@@ -42,8 +43,8 @@ class App extends Component{
     flagDisplayProyectos:false,
     flagDisplayProyecto:false,
     flagDisplayPresupuesto:false,
-    flagDisplayFotos:false
-            
+    flagDisplayFotos:false,
+    modulos:modulos        
   };
   }
  
@@ -53,7 +54,8 @@ class App extends Component{
       alert("login")
     } 
     goModulo=(e)=>{
-      alert('goModulo '+e)
+      //alert('goModulo '+e)
+      this.goComponent(e)
     }
     goNivel=(e)=>{
      // alert(e)
@@ -79,13 +81,13 @@ class App extends Component{
       //alert('goProyecto')
       //alert(this.state.flagDisplayProyectos)
       if (e==0){
-        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:true,flagDisplayProyectos:true,flagDisplayProyecto:false,flagDisplayFotos:false,flagDisplayDiario:false})  
+        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:true,flagDisplayProyectos:false,flagDisplayProyecto:false,flagDisplayFotos:false,flagDisplayDiario:false})  
       }
       if (e==1){
-        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:false,flagDisplayProyectos:false,flagDisplayProyecto:true,flagDisplayFotos:false,flagDisplayDiario:false})  
+        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:false,flagDisplayProyectos:true,flagDisplayProyecto:false,flagDisplayFotos:false,flagDisplayDiario:false})  
       }
       if (e==2){
-        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:false,flagDisplayProyectos:false,flagDisplayProyecto:false,flagDisplayFotos:false,flagDisplayDiario:false})  
+        this.setState({flagDisplayCohete:false,flagDisplayPresupuesto:false,flagDisplayProyectos:false,flagDisplayProyecto:true,flagDisplayFotos:false,flagDisplayDiario:false})  
       }
       if (e==3){
         
@@ -104,7 +106,7 @@ class App extends Component{
    //     const { auth, anchorEl } = this.state;
    // const open = Boolean(anchorEl);
 
-   const {criteria,flagDisplayDiario,flagDisplayProyectos,flagDisplayProyecto,flagDisplayPresupuesto,flagDisplayFotos,flagDisplayCohete}=this.state
+   const {criteria,modulos,flagDisplayDiario,flagDisplayProyectos,flagDisplayProyecto,flagDisplayPresupuesto,flagDisplayFotos,flagDisplayCohete}=this.state
    //const FixedPosition = withStyles(styles)(({ classes }) => (
      
    //
@@ -120,7 +122,10 @@ class App extends Component{
     {flagDisplayCohete&&
    <Cohete criteria={criteria} />
       }
+    {flagDisplayPresupuesto&&
+
       <Presupuestos />
+    }
       {flagDisplayDiario&&
    
    <Diario criteria={criteria} goNivel={this.goNivel}/>
@@ -143,13 +148,13 @@ class App extends Component{
    <Fotos />
       }   
    </div>
-      <Footer goModulo={this.goModulo} tabs={["Presupuestos","Ventas","FCaja"]}/>
+      <Footer goModulo={this.goModulo} tabs={modulos}/>
       <Index2 ppa={'autenticado'}/>
     
    {false&&
    <UnderstandingBreakpoints />
    }
-  }
+  
    </Fragment>
   );
 }
