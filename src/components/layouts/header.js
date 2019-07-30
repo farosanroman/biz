@@ -1,8 +1,9 @@
 
 import React, { Fragment, Component } from 'react';
-
+import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -11,7 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import logo from '../../assets/favicon.ico';
-
+import Divider from '@material-ui/core/Divider';
 const styles = theme => ({
   root: {
     flexGrow: 1
@@ -25,7 +26,85 @@ const styles = theme => ({
   },
   toolbarMargin: theme.mixins.toolbar
 });
-
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+  },
+  toolbar: {
+    paddingRight: 24, // keep right padding when drawer closed
+  },
+  toolbarIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+  appBar: {
+    zIndex: theme.zIndex.drawer + 1,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: 36,
+  },
+  menuButtonHidden: {
+    display: 'none',
+  },
+  title: {
+    flexGrow: 1,
+  },
+  drawerPaper: {
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    width: drawerWidth,
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  drawerPaperClose: {
+    overflowX: 'hidden',
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
+    [theme.breakpoints.up('sm')]: {
+      width: theme.spacing(9),
+    },
+  },
+  appBarSpacer: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    height: '100vh',
+    overflow: 'auto',
+  },
+  container: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(4),
+  },
+  paper: {
+    padding: theme.spacing(2),
+    display: 'flex',
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  fixedHeight: {
+    height: 240,
+  },
+}));
+const drawerWidth = 240;
 const MyToolbar = withStyles(styles)(
 
   class extends Component {
@@ -40,7 +119,7 @@ const MyToolbar = withStyles(styles)(
       ),
       RightButton: () => <Button color="inherit">Login</Button>
     };
-
+    
     state = { anchor: null };
 
     closeMenu = () =>{ 
@@ -109,8 +188,20 @@ this.props.goComponent(4)
                   <MenuItem onClick={this.goComponentDiario}>Diarios</MenuItem>
   
               </Menu>
+              <Drawer
+                  variant="permanent"
+                
+                   open={true}
+      >
+                   <Divider />
+                        <div>111111111111111111</div>
+                  <Divider />
+                  <div>222111111111111111111</div>
+                 </Drawer>
+                  
+                  
               <Typography
-                variant="title"
+                         variant="title"
                 color="inherit"
                 className={classes.flex}
               >

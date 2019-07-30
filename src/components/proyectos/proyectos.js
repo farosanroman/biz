@@ -13,7 +13,13 @@ import proyectos from '../../data/proyectos'
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
-
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Circle from 'react-circle';
+ 
 //import {Delete} from 'material-ui-icons'
 //import {ICONS} from '../../data/icons'
 import Icon from '../tools/icon';
@@ -41,7 +47,7 @@ const styleStatus={   Paper:{padding:1,marginTop:1,marginBottom:10,height:80,col
 }
 function Proyectos(props) {
   //alert(JSON.stringify(props.criteria))
-
+  
   const goDown=(e)=>{
     //alert("goDown")
     props.goNivel("down");
@@ -73,16 +79,16 @@ function Proyectos(props) {
     })
 
   }
+  
   return (
     <div style={{ marginTop: 10, padding: 30 } }>
-    
+ 
       <Grid container spacing={5} justify="center">
-      
-        {proyectonivel.map((p,index) => {
+      {proyectonivel.map((p,index) => {
         //if (p.nivel==2){
          // console.log(p)
           return (    
-           
+            
             <Grid item key={index}>
             <Card className={classes.card}>
               <CardActionArea>
@@ -96,14 +102,19 @@ function Proyectos(props) {
                 <CardContent >
                 <Paper style={style2.Paper}>
 
+                
                   <Typography gutterBottom variant="h6" component="h2">
                     {p.proyectoname}
                   </Typography>
                 </Paper>
                 <div style={{color:p.colorstatus}}>
+                  <Table><TableRow><TableCell>
                   <Typography gutterBottom variant="h6" component="h2" >
                     {p.status+' '+p.cantstatus}
                   </Typography>
+                  </TableCell><TableCell>
+                    <Circle progress={35} size={50}   roundedStroke={true}  showPercentage={true}  showPercentageSymbol={true} lineWidth={30}/>
+                  </TableCell></TableRow></Table>    
                   </div>
                   <Paper style={style.Paper}>
                  <table width="100%">
@@ -219,6 +230,24 @@ function Proyectos(props) {
 export default Proyectos;
 
 /*
+<Circle
+  animate={true} // Boolean: Animated/Static progress
+  animationDuration="1s" //String: Length of animation
+  responsive={true} // Boolean: Make SVG adapt to parent size
+  size={150} // Number: Defines the size of the circle.
+  lineWidth={14} // Number: Defines the thickness of the circle's stroke.
+  progress={69} // Number: Update to change the progress and percentage.
+  progressColor="cornflowerblue"  // String: Color of "progress" portion of circle.
+  bgColor="whitesmoke" // String: Color of "empty" portion of circle.
+  textColor="hotpink" // String: Color of percentage text color.
+  textStyle={{
+    font: 'bold 5rem Helvetica, Arial, sans-serif' // CSSProperties: Custom styling for percentage.
+  }}
+  percentSpacing={10} // Number: Adjust spacing of "%" symbol and number.
+  roundedStroke={true} // Boolean: Rounded/Flat line ends
+  showPercentage={true} // Boolean: Show/hide percentage.
+  showPercentageSymbol={true} // Boolean: Show/hide only the "%" symbol.
+/>
 const proys=[
 
   {

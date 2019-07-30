@@ -9,7 +9,9 @@
     "devextreme-react": "19.1.4",
     "material-table": "^1.40.1",
     "react": "^16.8.6",
+    "react-circle": "^1.1.1",
     "react-dom": "^16.8.6",
+    "react-google-charts": "^3.0.14",
     "react-scripts": "3.0.1"
   },
   "scripts": {
