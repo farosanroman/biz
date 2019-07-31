@@ -1,31 +1,56 @@
 
-import React, { Fragment, Component } from 'react';
+import React from 'react';
+import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PeopleIcon from '@material-ui/icons/People';
+import BarChartIcon from '@material-ui/icons/BarChart';
+import LayersIcon from '@material-ui/icons/Layers';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import logo from '../../assets/favicon.ico';
-import Divider from '@material-ui/core/Divider';
-const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
-  flex: {
-    flex: 1
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
-  },
-  toolbarMargin: theme.mixins.toolbar
-});
+//import { mainListItems, secondaryListItems } from './listItems';
+//import Chart from './Chart';
+//import Deposits from './Deposits';
+//import Orders from './Orders';
+
+function MadeWithLove() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Built with love by the '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Material-UI
+      </Link>
+      {' team.'}
+    </Typography>
+  );
+}
+
+const drawerWidth = 240;
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -40,6 +65,7 @@ const useStyles = makeStyles(theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
+  toolbarMargin: theme.mixins.toolbar,
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
@@ -104,128 +130,70 @@ const useStyles = makeStyles(theme => ({
     height: 240,
   },
 }));
-const drawerWidth = 240;
-const MyToolbar = withStyles(styles)(
 
-  class extends Component {
-    static defaultProps = {
-      MenuItems: ({ closeMenu }) => (
-        <Fragment>
-                      
-          <MenuItem onClick={this.goComponent}>Profile</MenuItem>
-          <MenuItem onClick={closeMenu}>My account</MenuItem>
-          <MenuItem onClick={closeMenu}>Logout</MenuItem>
-        </Fragment>
-      ),
-      RightButton: () => <Button color="inherit">Login</Button>
-    };
-    
-    state = { anchor: null };
-
-    closeMenu = () =>{ 
-      //  alert("aa")
-        this.setState({ anchor: null })
-         
-    };
-    goComponentV=(e)=>{
-        this.setState({ anchor: null })
-      
-//      alert()
-      this.props.goComponent(0)
-     }
-     goComponentD=(e)=>{
-      this.setState({ anchor: null })
-    
-//      alert()
-    this.props.goComponent(1)
-   }
-   goComponentP=(e)=>{
-    this.setState({ anchor: null })
+export default function Header({goComponent}) {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
+  const [anchorMenu, setAnchorMenu] = React.useState(null);
+  const [openMenu, setOpenMenu] = React.useState(false);
   
-//      alert()
-  this.props.goComponent(2)
- }
- goComponentF=(e)=>{
-  this.setState({ anchor: null })
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+  const handleMenuOpen=(e)=>{
+    //alert(e)
+    setAnchorMenu(e)
+    setOpenMenu(true)
+  }
+  const handleDisplay=(e)=>{
+    goComponent(e)
 
-//      alert()
-this.props.goComponent(3)
-}
-goComponentDiario=(e)=>{
- // this.setState({ anchor: null })
+  }
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-//     alert()
-this.props.goComponent(4)
-}
-    render() {
-      const { classes, title, MenuItems, RightButton } = this.props;
-
-      return (
-        <Fragment>
-          <AppBar>
-            <Toolbar color={'red'}>
-              <IconButton
+  return (
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar position="absolute" className={classes.appBar}>
+        <Toolbar className={classes.toolbar}>
+        <IconButton
                  className={classes.menuButton}
                 color="inherit"
                 aria-label="Menu"
                 onClick={e =>
-                  this.setState({ anchor: e.currentTarget })
-                }
+                  //alert(e.currentTarget)
+                  handleMenuOpen(e.currentTarget)
+                  }
               >
                 <MenuIcon />
               </IconButton>
               <img src={logo} style={{ height: '20px' }} />
-
               <Menu
-                anchorEl={this.state.anchor}
-                open={Boolean(this.state.anchor)}
-                onClose={this.closeMenu}
+                anchorEl={anchorMenu}
+                open={openMenu}
+                //onClose={this.closeMenu}
               >
-                  <MenuItem onClick={this.goComponentV}>Proyectos</MenuItem>
-                  <MenuItem onClick={this.goComponentD}>Proyecto</MenuItem>
-                  <MenuItem onClick={this.goComponentP}>Presupuesto</MenuItem>
-                  <MenuItem onClick={this.goComponentF}>Fotos</MenuItem>
-                  <MenuItem onClick={this.goComponentDiario}>Diarios</MenuItem>
+                  <MenuItem  onClick={e =>{handleDisplay(0); setOpenMenu(false)} } >Proyectos</MenuItem>
+                  <MenuItem onClick={e =>{handleDisplay(1); setOpenMenu(false)} }>Proyecto</MenuItem>
+                  <MenuItem onClick={e => {handleDisplay(2); setOpenMenu(false)} }>Presupuesto</MenuItem>
+                  <MenuItem onClick={e =>{handleDisplay(3); setOpenMenu(false)} }>Fotos</MenuItem>
+                  <MenuItem onClick={e => {handleDisplay(4); setOpenMenu(false)} }>Diarios</MenuItem>
   
               </Menu>
-              <Drawer
-                  variant="permanent"
-                
-                   open={true}
-      >
-                   <Divider />
-                        <div>111111111111111111</div>
-                  <Divider />
-                  <div>222111111111111111111</div>
-                 </Drawer>
-                  
-                  
-              <Typography
-                         variant="title"
-                color="inherit"
-                className={classes.flex}
-              >
-                {'Grupo Vinsoca'}
-              </Typography>
-              <RightButton />
-            </Toolbar>
-          </AppBar>
-          <div className={classes.toolbarMargin} />
-        </Fragment>
-      );
-    }
-  }
-);
-
-const ToolbarAbstraction = withStyles(styles)(
-  ({ classes, ...props }) => (
-    <div className={classes.root}>
-      <MyToolbar {...props} />
+          <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+            Grupo Vinsoca
+          </Typography>
+          <IconButton color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <div className={classes.toolbarMargin} />
     </div>
-  )
-);
-
-export default ToolbarAbstraction;
-    
-  
-  
+  );
+}
