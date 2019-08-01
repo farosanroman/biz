@@ -11,24 +11,9 @@ import Button from "@material-ui/core/Button";
 import Box from '@material-ui/core/Box';
 import proyectos from '../../data/proyectos'
 import Icon from '../tools/icon';
-import {Chart as ChartG} from 'react-google-charts';
-import Chart , {
-  ArgumentAxis,
-  ArgumentAxisLabel,
-  CommonSeriesSettings,
-  Legend,
-  Label,
-  Series,
-  Tooltip,
-  ValueAxis,
-  ValueAxisConstantLine,
-  ValueAxisConstantLineLabel,
-  ValueAxisLabel,
-  Grid as GridDE,
-  Title,Subtitle,
-  ConstantLine,Size as SizeS,
-  CommonPaneSettings,Border
-} from 'devextreme-react/chart';
+
+//import {Chart as ChartG} from 'react-google-charts';
+import Monto from './monto'
 import CurvaS from './curvas'
 import Gantt from './gantt'
 import Sankey from './sankey'
@@ -43,22 +28,32 @@ import Tree from './tree'
 //https://www.youtube.com/watch?v=xm4LX5fJKZ8&list=PLcCp4mjO-z98WAu4sd0eVha1g-NMfzHZk
 //https://stackoverflow.com/questions/53959220/how-to-align-two-react-components-horizontally
 //alert(JSON.stringify(proyectos))
+//https://css-tricks.com/snippets/css/a-guide-to-flexbox/  FLEXBOX
 const useStyles = makeStyles({
   card: {
     maxWidth: 350,
   },
+  paperMonto: {
+    //padding: theme.spacing(2),
+    overflow: 'auto',
+    flexDirection: 'column',
+    height: 200,
+  },
+  paper: {
+    //padding: theme.spacing(2),
+    overflow: 'auto',
+    flexDirection: 'column',
+  },
+  fixedHeight: {
+    height: 200,
+  }
  // toolbarMargin: theme.mixins.toolbar
 });
 //const onClick = content => () => {
 //  setOpen(false);
 //  setContent(content);
 //};
-const style={   Paper:{padding:1,marginTop:1,marginBottom:1}
-}
-const style2={   Paper:{padding:1,marginTop:1,marginBottom:10,height:80}
-}
-const styleStatus={   Paper:{padding:1,marginTop:1,marginBottom:10,height:80,color:'red'}
-}
+
 function Presupuestos(props) {
   //alert(JSON.stringify(props.criteria))
 
@@ -70,7 +65,6 @@ function Presupuestos(props) {
     //alert("goDown")
     props.goNivel("up");
   } 
-  const classes = useStyles();
  const ddaattaa=[]
  ddaattaa.push({fecha:new Date(2018,1,1,1),cant:4,acum:4})
  ddaattaa.push({fecha:new Date(2018,1,1,5),cant:6,acum:10})
@@ -82,107 +76,38 @@ function Presupuestos(props) {
  
  data2.push({actividad:2,blanco:4,azul:2,blanco2:3,verde:5})
  data2.push({actividad:3,blanco:3,azul:4,blanco2:3,verde:5})
- // type: 'horizontalBar',
-//https://github.com/mui-org/material-ui/issues/15066
-  return (
+ const classes = useStyles();
+//https://css-tricks.com/snippets/css/a-guide-to-flexbox/ FLEXBOX
+ return (
     <div style={{ marginTop: 10, padding: 30 } }>
  <div className={classes.root}>
  
-  <Grid container spacing={3}>
+ <div/>
+ <Paper className={classes.paper} borderRadius="borderRadius">
+ <Typography variant="h5" component="h3">
+       Proyecto XYZ
+      
+  </Typography>
+  </Paper>
+  <br/>
+  <Grid container spacing={3}   alignItems="center"  justify="center">
   <Grid item xs={12} sm={6} md={3}>
-      <Paper className={classes.paper}>
-      <Card className={classes.card} raised color="red"   backgroundColor= "primary">
-      <CardActionArea>
-       
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Costos Original
-          </Typography>
-          <Typography gutterBottom variant="h4" component="h2">
-            10.000.000$
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-         Detalle
-        </Button>
-      </CardActions>
-    </Card>
+      <Paper className={classes.paperMonto}>
+          <Monto  titulo={'Costos'} original={'3.890.383,89'} actual={'4.290.383,89'} />
       </Paper>
     </Grid>
     <Grid item xs={12} sm={6} md={3}>
-      <Paper className={classes.paper}>
-      <Card className={classes.card} raised >
-      <CardActionArea>
-       
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Costos Actual
-          </Typography>
-          <Typography gutterBottom variant="h4" component="h2">
-            10.000.000$
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-         Detalle
-        </Button>
-      </CardActions>
-    </Card>
-
-        
+      <Paper className={classes.paperMonto}>
+         <Monto  titulo={'Ingresos'} original={'4.490.383,89'} actual={'6.290.383,89'} />        
       </Paper>
     </Grid>
         <Grid item xs={12} sm={6} md={3}>
-      <Paper className={classes.paper}>
-      <Card className={classes.card} raised >
-      <CardActionArea>
-       
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Ejecutado
-          </Typography>
-          <Typography gutterBottom variant="h4" component="h2">
-            10.000.000$
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-         Detalle
-        </Button>
-      </CardActions>
-    </Card>
-
-
+      <Paper className={classes.paperMonto}>
+      <Monto  titulo={'Utilidad'} original={'250.959,45'} actual={'340.478,45'} />        
       </Paper>
-    </Grid>    <Grid item xs={12} sm={6} md={3}>
-      <Paper className={classes.paper}>
-      <Card className={classes.card} raised >
-      <CardActionArea>
-       
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Valor Ganado
-          </Typography>
-          <Typography gutterBottom variant="h4" component="h2">
-            10.000.000$
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-         Detalle
-        </Button>
-      </CardActions>
-    </Card>
-
-      </Paper>
+    </Grid>    
     </Grid>
- 
-
+    <Grid container spacing={3}>
     <Grid item xs={12} sm={6} md={6}>
       <Paper className={classes.paper}>
         
