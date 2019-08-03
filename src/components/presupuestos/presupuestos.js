@@ -101,13 +101,17 @@ function Presupuestos(props) {
          <Monto  titulo={'Ingresos'} original={'4.490.383,89'} actual={'6.290.383,89'} />        
       </Paper>
     </Grid>
+
+    
         <Grid item xs={12} sm={6} md={3}>
       <Paper className={classes.paperMonto}>
       <Monto  titulo={'Utilidad'} original={'250.959,45'} actual={'340.478,45'} />        
       </Paper>
     </Grid>    
     </Grid>
-    <Grid container spacing={3}>
+
+
+    <Grid container spacing={3}   alignItems="center"  justify="center">
     <Grid item xs={12} sm={6} md={6}>
       <Paper className={classes.paper}>
         

@@ -26,30 +26,50 @@ function CurvaS(props) {
   const classes = useStyles();
  // type: 'horizontalBar',
 //https://github.com/mui-org/material-ui/issues/15066
+const data=[
+  ['Mes', 'Presupuesto', 'Costos'],
+  ['2018.01', 0, 0],
+  ['2018.02', 200,0],
+  ['20158.03',400, 200],
+  ['2018.04', 1000, 800],    
+  ['2018.05', 1200, 1000],
+  ['2018.06', 1450, 1340],
+  ['2018.07', 1600, 1600],
+  ['2018.08', 1800, 1850],
+  
+  ['2018.09', 1820, 1990],
+  ['2018.10', 1850, 2100],
+  ['2018.11', 1860, 2200],
+  ['2018.12', 1900, 2300]
+]
+const columns = [
+  {
+    type: "number",
+    label: "year"
+  },
+  {
+    label: "Cant1",
+    type: "number"
+  },
+  
+  {
+    label: "Cant2",
+    type: "number"
+  }
+];
+const rows = [[2015, 0,0], [2016, 1,2], [2017, 1.3,2.6], [2018, 2,3], [2019, 3,5], [2020, 3.5,5.6]];
   return (
     <div style={{ marginTop: 10, padding: 30 } }>
 <Chart
-  width={'500px'}
+  width={'100%'}
   height={'300px'}
   chartType="AreaChart"
   loader={<div>CurvsS</div>}
-  data={[
-    ['Mes', 'Presupuesto', 'Costos'],
-    ['2018.01', 0, 0],
-    ['2018.02', 200,0],
-    ['20158.03',400, 200],
-    ['2018.04', 1000, 800],    
-    ['2018.05', 1200, 1000],
-    ['2018.06', 1450, 1340],
-    ['2018.07', 1600, 1600],
-    ['2018.08', 1800, 1850],
-    
-    ['2018.09', 1820, 1990],
-    ['2018.10', 1850, 2100],
-    ['2018.11', 1860, 2200],
-    ['2018.12', 1900, 2300]
-  ]}
+  rows={rows}
+          columns={columns}
   options={{
+    legend:'top',
+    is3D:true,
     title: 'Curva S',
     hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
     vAxis: { minValue: 0 },
