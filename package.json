@@ -8,6 +8,7 @@
     "devextreme": "19.1.4",
     "devextreme-react": "19.1.4",
     "material-table": "^1.40.1",
+    "notistack": "^0.8.9",
     "react": "^16.8.6",
     "react-circle": "^1.1.1",
     "react-dom": "^16.8.6",

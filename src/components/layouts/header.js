@@ -32,6 +32,7 @@ import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import logo from '../../assets/favicon.ico';
+import SnackBar from './snackbar';
 //import { mainListItems, secondaryListItems } from './listItems';
 //import Chart from './Chart';
 //import Deposits from './Deposits';
@@ -130,7 +131,7 @@ const useStyles = makeStyles(theme => ({
     height: 240,
   },
 }));
-
+//export default ({goComponent }) => {
 export default function Header({goComponent}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -186,13 +187,11 @@ export default function Header({goComponent}) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Grupo Vinsoca
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+         
+          <SnackBar />
         </Toolbar>
       </AppBar>
+      
       <div className={classes.toolbarMargin} />
     </div>
   );
