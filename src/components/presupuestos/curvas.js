@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography } from "@material-ui/core";
-
+import CURVAJSON from '../../data/curvajson'
 import Chart  from 'react-google-charts';
 const useStyles = makeStyles({
   card: {
@@ -42,10 +42,17 @@ const data=[
   ['2018.11', 1860, 2200],
   ['2018.12', 1900, 2300]
 ]
+//alert(JSON.stringify(CURVAJSON))
+const data2=[ ]
+for (var i = 0; i < CURVAJSON.curvajson.length; i++) { 
+   data2.push([CURVAJSON.curvajson[i].mes,CURVAJSON.curvajson[i].monto,CURVAJSON.curvajson[i].acum])
+}
+//alert(JSON.stringify(data2))
 const columns = [
+
   {
     type: "number",
-    label: "year"
+    label: "mes"
   },
   {
     label: "Cant1",
@@ -53,7 +60,7 @@ const columns = [
   },
   
   {
-    label: "Cant2",
+    label: "Ejecutado",
     type: "number"
   }
 ];
@@ -65,7 +72,7 @@ const rows = [[2015, 0,0], [2016, 1,2], [2017, 1.3,2.6], [2018, 2,3], [2019, 3,5
   height={'300px'}
   chartType="AreaChart"
   loader={<div>CurvsS</div>}
-  rows={rows}
+  rows={data2}
           columns={columns}
   options={{
     legend:'top',
@@ -87,4 +94,17 @@ const rows = [[2015, 0,0], [2016, 1,2], [2017, 1.3,2.6], [2018, 2,3], [2019, 3,5
 
 
 export default CurvaS;
+
+/*
+select  * into #temp from (
+select periodo, sum(debito_mont-credito_mont) montomes from diarios where cia='INCOGGP' and cuenta like '11%' group by periodo 
+) d
+
+select periodo,montomes,(select sum(montomes) temp2 from #temp TT where TT.PERIODO<=T.PERIODO) acum into #temp2  from #temp T order by PERIODO 
+select IDENTITY(int, 1, 1) AS id,* into #temp3 from #temp2
+select * from #temp3
+drop table #temp
+drop table #temp2
+drop table #temp3
+*/
 
